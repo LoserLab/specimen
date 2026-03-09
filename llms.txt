@@ -1,0 +1,53 @@
+# Specimen
+
+> Typography system compiler. Generates structured type scales, font stacks, and typographic tokens from configuration. Supports 8 mathematical ratios and 3 density modes. Exports to CSS variables, Tailwind config, SCSS, and Figma tokens.
+
+## What it does
+
+Generates complete typography systems: modular type scales (xs to 6xl), font family stacks, weight scales (100-900), proportional line heights, letter spacing, and semantic mappings (h1-h6, body, caption).
+
+## Usage
+
+```python
+from specimen_compiler import compile_from_config
+
+config = {
+    'base_size': 16,
+    'ratio': 'minor_third',
+    'font_family_primary': 'Inter, system-ui, sans-serif',
+    'mode': 'balanced'
+}
+
+result = compile_from_config(config)
+typography_system = result['typography_system']
+```
+
+## Scale ratios
+
+- `minor_second` (1.067), `major_second` (1.125), `minor_third` (1.200), `major_third` (1.250)
+- `perfect_fourth` (1.333), `augmented_fourth` (1.414), `perfect_fifth` (1.500), `golden_ratio` (1.618)
+
+## Modes
+
+- `tight`: 4 steps up, 1 down (mobile apps, compact UIs)
+- `balanced`: 5 steps up, 2 down (most websites)
+- `loose`: 6 steps up, 2 down (marketing sites, editorial)
+
+## Exports
+
+```python
+from specimen_exports import export_css_variables, export_tailwind_config, export_scss_variables, export_figma_tokens
+
+css = export_css_variables(typography_system)
+tailwind = export_tailwind_config(typography_system)
+scss = export_scss_variables(typography_system)
+figma = export_figma_tokens(typography_system)
+```
+
+## Part of a suite
+
+Hexed (colors) + Specimen (typography) + Gridlock (layout) + Eyes Peeled (accessibility) + Devourer (components)
+
+## Author
+
+Created by Heathen
